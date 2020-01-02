@@ -49,13 +49,13 @@ void draw() {
 }
 
 void initializeZones() {
-  AudioSample[] audios0 = {minim.loadSample("i0.mp3"), minim.loadSample("i1.mp3"), minim.loadSample("d2.mp3"), minim.loadSample("d3.mp3")};
-  AudioSample[] audios1 = {minim.loadSample("ii0.mp3"), minim.loadSample("ii1.mp3"), minim.loadSample("dd2.mp3"), minim.loadSample("dd3.mp3")};
+  AudioSample[] piano = {minim.loadSample("i0.mp3"), minim.loadSample("i1.mp3"), minim.loadSample("d2.mp3"), minim.loadSample("d3.mp3")};
+  AudioSample[] bateria = {minim.loadSample("ii0.mp3"), minim.loadSample("ii1.mp3"), minim.loadSample("dd2.mp3"), minim.loadSample("dd3.mp3")};
   AudioSample[] audios2 = {minim.loadSample("iii0.mp3"), minim.loadSample("iii1.mp3"), minim.loadSample("ddd2.mp3"), minim.loadSample("ddd3.mp3")};
   AudioSample[] audios3 = {minim.loadSample("iiii0.mp3"), minim.loadSample("iiii1.mp3"), minim.loadSample("dddd2.mp3"), minim.loadSample("dddd3.mp3")};
-
-  zonas[0] = new Zona(espacio, espacio, anchura, altura, audios0);
-  zonas[1] = new Zona(espacio+anchura+espacio, espacio, anchura*2+espacio*2, altura, audios1);
+  
+  zonas[0] = new Zona(espacio, espacio, anchura, altura, piano);
+  zonas[1] = new Zona(espacio+anchura+espacio, espacio, anchura*2+espacio*2, altura, bateria);
   zonas[2] = new Zona(espacio+anchura*2+espacio*2, espacio, anchura*3+espacio*3, altura, audios2);
   zonas[3] = new Zona(espacio+anchura*3+espacio*3, espacio, anchura*4+espacio*4, altura, audios3);
 }
