@@ -12,7 +12,7 @@ int indicador_instrumento = 1;
 AudioSample[] piano = new AudioSample[4];
 AudioSample[] bateria = new AudioSample[4];
 AudioSample[] guitarra = new AudioSample[4];
-String[] instrumentos = {"Piano","Bateria","Guitarra"};
+String[] instrumentos = {"Piano", "Bateria", "Guitarra"};
 
 void setup() {
   minim = new Minim(this);
@@ -43,27 +43,27 @@ void draw() {
           indicador_musica = 0;
           play(indicador_musica, indicador_instrumento);
         } else {
-            if (zonas[1].checkZone(x, y)) {
-              indicador_musica = 1;
-              play(indicador_musica, indicador_instrumento);
+          if (zonas[1].checkZone(x, y)) {
+            indicador_musica = 1;
+            play(indicador_musica, indicador_instrumento);
           } else {
-              if (zonas[2].checkZone(x, y)) {
-                indicador_musica = 2;
+            if (zonas[2].checkZone(x, y)) {
+              indicador_musica = 2;
+              play(indicador_musica, indicador_instrumento);
+            } else {
+              if (zonas[3].checkZone(x, y)) {
+                indicador_musica = 3;
                 play(indicador_musica, indicador_instrumento);
-              } else {
-                  if (zonas[3].checkZone(x, y)) {
-                    indicador_musica = 3;
-                    play(indicador_musica, indicador_instrumento);
+              }
+            }
           }
         }
       }
     }
   }
-}
-  }
-  
+
   textSize(100);
-  text(instrumentos[indicador_instrumento], 450,675);
+  text(instrumentos[indicador_instrumento], 450, 675);
 }
 
 void initializeZones() {
@@ -71,18 +71,18 @@ void initializeZones() {
   piano[1] = minim.loadSample("piano2.mp3"); //piano[0] = minim.loadSample("piano-iii1.mp3"); 
   piano[2] = minim.loadSample("piano3.mp3"); //piano[0] = minim.loadSample("piano-ddd2.mp3"); 
   piano[3] = minim.loadSample("piano4.mp3"); //piano[0] = minim.loadSample("piano-ddd3.mp3"); 
-  
+
   bateria[0] = minim.loadSample("platillo1.mp3");
   bateria[1] = minim.loadSample("tambor1.mp3"); 
   bateria[2] = minim.loadSample("tambor2.mp3");
   bateria[3] = minim.loadSample("platillo2.mp3");
-  
-  
+
+
   guitarra[0] =  minim.loadSample("guitarra1.mp3");
   guitarra[1] =  minim.loadSample("guitarra2.mp3");
   guitarra[2] =  minim.loadSample("guitarra3.mp3");
   guitarra[3] =  minim.loadSample("guitarra4.mp3");
-  
+
   zonas[0] = new Zona(espacio, espacio, espacio+anchura, altura);
   zonas[1] = new Zona(espacio+anchura+espacio, espacio, anchura*2+espacio*2, espacio+altura);
   zonas[2] = new Zona(espacio+anchura*2+espacio*2, espacio, anchura*3+espacio*3, espacio+altura);
@@ -107,26 +107,25 @@ void captureEvent(Capture c) {
 }
 
 void play(int pista, int instrumento) {
-    if(instrumento==0){
-      piano[pista].trigger();
-    }
-    if(instrumento==1){
-      bateria[pista].trigger();
-    }
-    if(instrumento==2){
-      guitarra[pista].trigger();
-    }
-    
+  if (instrumento==0) {
+    piano[pista].trigger();
   }
-  
-void keyPressed(){
-    
-    if(key==CODED){
-     if(keyCode == RIGHT && indicador_instrumento<2){
-       indicador_instrumento++;
-     }
-     if(keyCode == LEFT && indicador_instrumento>0){
-       indicador_instrumento--;
+  if (instrumento==1) {
+    bateria[pista].trigger();
+  }
+  if (instrumento==2) {
+    guitarra[pista].trigger();
+  }
+}
+
+void keyPressed() {
+
+  if (key==CODED) {
+    if (keyCode == RIGHT && indicador_instrumento<2) {
+      indicador_instrumento++;
+    }
+    if (keyCode == LEFT && indicador_instrumento>0) {
+      indicador_instrumento--;
     }
   }
 }
