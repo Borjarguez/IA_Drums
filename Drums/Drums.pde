@@ -12,6 +12,7 @@ int indicador_instrumento = 1;
 AudioSample[] piano = new AudioSample[4];
 AudioSample[] bateria = new AudioSample[4];
 AudioSample[] guitarra = new AudioSample[4];
+String[] instrumentos = {"Piano","Bateria","Guitarra"};
 
 void setup() {
   minim = new Minim(this);
@@ -60,6 +61,9 @@ void draw() {
   }
 }
   }
+  
+  textSize(100);
+  text(instrumentos[indicador_instrumento], 450,675);
 }
 
 void initializeZones() {
@@ -68,11 +72,11 @@ void initializeZones() {
   piano[2] = minim.loadSample("piano3.mp3"); //piano[0] = minim.loadSample("piano-ddd2.mp3"); 
   piano[3] = minim.loadSample("piano4.mp3"); //piano[0] = minim.loadSample("piano-ddd3.mp3"); 
   
+  bateria[0] = minim.loadSample("platillo1.mp3");
+  bateria[1] = minim.loadSample("tambor1.mp3"); 
+  bateria[2] = minim.loadSample("tambor2.mp3");
+  bateria[3] = minim.loadSample("platillo2.mp3");
   
-  bateria[0] = minim.loadSample("tambor1.mp3"); 
-  bateria[1] = minim.loadSample("platillo1.mp3");
-  bateria[2] = minim.loadSample("platillo2.mp3");
-  bateria[3] = minim.loadSample("tambor2.mp3");
   
   guitarra[0] =  minim.loadSample("guitarra1.mp3");
   guitarra[1] =  minim.loadSample("guitarra2.mp3");
